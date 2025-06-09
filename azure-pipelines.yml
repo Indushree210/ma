@@ -10,15 +10,15 @@ pool:
   name: 'lpool'
   
 steps:
--Checkout: self
+- checkout: self
 
-script: mvn clean test
+- script: mvn clean test
 
-task: PublishTestResults@2 
-input:
-  testResultsFiles: '**/target/surefire-reports/TEST-*.xml'
-  testResultsFormat: 'JUnit'
-  failTaskOnMissingResultsFile:true
+- task: PublishTestResults@2 
+  inputs:
+    testResultsFiles: '**/target/surefire-reports/TEST-*.xml'
+    testResultsFormat: 'JUnit'
+    failTaskOnMissingResultsFile: true
 
 
 - script: echo Hello, world!
